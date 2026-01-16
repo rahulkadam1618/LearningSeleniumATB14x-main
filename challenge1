@@ -1,0 +1,22 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class BasicWebDriverSetup {
+    public static void main(String[] args) {
+
+        // 1. Create WebDriver instance
+        WebDriver driver = new ChromeDriver();
+
+        // 2. Navigate to Google
+        driver.get("https://www.google.com");
+
+        // 3. Maximize the browser window
+        driver.manage().window().maximize();
+
+        // 4. Print the page title
+        System.out.println("Page Title: " + driver.getTitle());
+
+        // 5. Close the browser
+        driver.quit();
+    }
+}
