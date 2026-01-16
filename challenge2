@@ -1,0 +1,36 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LoginFormTest {
+
+    public static void main(String[] args) {
+
+        // 1. Launch Chrome browser
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // 2. Navigate to login page
+            driver.get("https://the-internet.herokuapp.com/login");
+            driver.manage().window().maximize();
+
+            // 3. Locate username and password fields
+            driver.findElement(By.id("username")).sendKeys("tomsmith");
+            driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+
+            // 4. Click the login button
+            driver.findElement(By.cssSelector("button[type='submit']")).click();
+
+            // 5. Handle navigation – print page title
+            System.out.println("Page Title After Login: " + driver.getTitle());
+
+            // 6. Verify login success (optional)
+            String successMessage = driver.findElement(By.id("flash")).getText();
+            System.out.println("Login Message: " + successMessage);
+
+        } finally {
+            // 7. Close the browser
+            driver.quit();
+        }
+    }
+}
